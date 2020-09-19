@@ -15,7 +15,7 @@
     - 注意绑定 this
 
 #### 02
-不能直接操作 `state` 的数据，然后再 `setState`
+不能直接操作 `state` 的数据，然后再 `setState`，比如像下面这样
 ```
 this.state.list.splice(index, 1);
 this.setState({
@@ -39,3 +39,18 @@ this.setState({
 父子组件传值时候
 - 在父组件调用子组件，需要传什么写在子组件的标签中
 - 在子组件用 `props` 拿到需要传的值
+
+#### 06
+- 父组件给子组件传递数据是单向数据流
+- 在子组件里面不能直接更改父组件的 property
+- 可以通过绑定的方法更改
+
+#### 07
+- React 自带调试工具
+- 可以在 chrome 应用商店上安装 React Developer Tools
+- 在科学上网的前提下才能安装
+
+#### 08
+- `ref` 可以绑定 DOM
+- `setState` 是异步的方法
+

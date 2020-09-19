@@ -17,11 +17,16 @@ class Menu extends Component {
             <Fragment>
                 <div>
                     <label htmlFor="menu">菜单：</label>
-                    <input id="menu" value={this.state.inputValue} onChange={this.onChange.bind(this)} />
+                    <input 
+                        id="menu" 
+                        value={this.state.inputValue} 
+                        onChange={this.onChange.bind(this)}
+                        ref={(input)=>{this.input=input}}
+                    />
                     <button onClick={this.addList.bind(this)}>添加</button>
                 </div>
                 <div>
-                    <ul>
+                    <ul ref={(ul)=>{this.ul=ul}}>
                         {
                             this.state.list.map((item, index) => {
                                 // 需要一个 key
@@ -41,10 +46,10 @@ class Menu extends Component {
         )
     }
 
-    onChange(e) {
+    onChange() {
         // 改变 state 里面的数据要用 setstate
         this.setState({
-            inputValue: e.target.value
+            inputValue: this.input.value
         });
     }
 
@@ -53,6 +58,8 @@ class Menu extends Component {
         this.setState({
             list: [...this.state.list, this.state.inputValue],
             inputValue: ""
+        }, ()=>{
+            console.log(this.ul.querySelectorAll("li").length);
         });
     }
 
@@ -66,5 +73,6 @@ class Menu extends Component {
     }
 
 }
+
 
 export default Menu;
