@@ -1,4 +1,4 @@
-#### day01
+#### 01
 我们有一个 `Menu` 组件，这个组件有一个功能，在 input 框里面输入名字可以自动显示在列表里面
 
 -  创建 view
@@ -13,3 +13,29 @@
     - 点击 button 的时候把 value 添加到 list 里面
 - click, change 事件
     - 注意绑定 this
+
+#### 02
+不能直接操作 `state` 的数据，然后再 `setState`
+```
+this.state.list.splice(index, 1);
+this.setState({
+    list: this.state.list
+});
+```
+这样做会有很大的性能问题
+
+#### 03
+几个 jsx 坑
+- 注释 ctrl+/
+- 用 `class` 的时候需要写 `className`
+- `label` 里面的 `for` 要用 `htmlFor`
+- `dangerouslySetInnerHTML={{__html: item}}` 可以解析 html 标签
+
+#### 04
+一个提高效率的插件：simple react snippets
+有一些快捷方式
+
+#### 05
+父子组件传值时候
+- 在父组件调用子组件，需要传什么写在子组件的标签中
+- 在子组件用 `props` 拿到需要传的值
