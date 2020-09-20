@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Item from "./item";
+import axios from "axios";
 
 class Menu extends Component {
     constructor(props) {
@@ -10,7 +11,32 @@ class Menu extends Component {
         }
     }
 
+    componentWillMount() {
+        console.log("componentWillMount");
+    }
+
+    componentDidMount() {
+        axios.post("https://baidu.com")
+            .then(res => { console.log(JSON.stringify(res)) })
+            .catch((err) => { console.log("error") });
+        console.log("componentDidMount");
+    }
+
+    componentWillUpdate() {
+        console.log("componentWillUpdate");
+    }
+
+    componentDidUpdate() {
+        console.log("componentDidUpdate");
+    }
+
+    shouldComponentUpdate() {
+        console.log("shouldComponentUpdate");
+        return true;
+    }
+
     render() {
+        console.log("render");
         return (
             // 在 React 中外层一定要有一个 div，但是有的时候不需要外层加 div
             // 这个时候可以用 Fragment 代替
@@ -59,7 +85,7 @@ class Menu extends Component {
             list: [...this.state.list, this.state.inputValue],
             inputValue: ""
         }, ()=>{
-            console.log(this.ul.querySelectorAll("li").length);
+            //console.log(this.ul.querySelectorAll("li").length);
         });
     }
 
@@ -71,7 +97,6 @@ class Menu extends Component {
             list: list
         });
     }
-
 }
 
 

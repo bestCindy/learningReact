@@ -54,3 +54,62 @@ this.setState({
 - `ref` 可以绑定 DOM
 - `setState` 是异步的方法
 
+#### 09 生命周期函数
+什么是生命周期函数：在某一时刻可以自动执行的函数，注意 `constructor` 不属于生命周期，属于 ES6 的语法
+
+生命周期函数分几个阶段：
+
+Initialization
+- setup props and state
+
+Mounting
+- componentWillMount
+- render
+- componentDidMount
+
+Updation state
+- shouldComponentUpdate
+    - 返回 false 不会往下执行
+- componentWillUpdate
+- render
+- componentDidUpdate
+
+Updation props
+- componentWillReceiveProps
+    - 组件第一次存在于 dom 中，函数是不会被执行
+    - 如果已存在 dom 中，函数才会被执行
+- shouldComponentUpdate
+- componentWillUpdate
+- render
+- componentDidUpdate
+
+Unmounting
+- componentWillUnmounting
+
+#### 10 组件优化
+```
+shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.content !== this.props.content) {
+        return true;
+    };
+    return false;
+}
+```
+
+#### axios
+- 可以远程请求数据
+- npm install 四种形式
+    - npm install xxx
+        - 安装到项目目录下（node_modules），不会在 package.json 里面添加依赖
+    - npm install -g xxx
+        - 安装到全局
+        - 具体安装到那个目录下面是根据配置 npm 的时候，prefix 的位置
+    - npm install -save xxx
+        - 安装到项目目录下（node_modules），并且会添加在 package.json dependencies 里面
+    - npm install -save-dev xxx
+        - 会安装在 dev dependencies 里面
+- 推荐在 “componentDidMount” 里面加载数据，只加载一次，后期 update 的时候是不加载的
+
+
+
+
